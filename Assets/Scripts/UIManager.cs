@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _shieldsText;
     [SerializeField] private Image _LiveImage;
     [SerializeField] private Sprite[] _liveSprites;
     [SerializeField] private Text _gameOverText;
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _scoreText.text = "Score: " + 0;
+        _shieldsText.text = "Shields: " + 0;
         _gameOverText.gameObject.SetActive(false);
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -39,6 +41,11 @@ public class UIManager : MonoBehaviour
         {
             GameOverSequence();
         }
+    }
+
+    public void updateShields(int shields)
+    {
+        _shieldsText.text = $"Shields: {shields}";
     }
 
     public void StartGameSequence()
