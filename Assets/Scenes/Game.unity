@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _speedMultiplyer: 2
+  _speedBoostMultipler: 1.5
   _lives: 3
   _lazerPrefab: {fileID: 3016720442101740653, guid: 46da15f52f4784b27a5561ef0eefe31e, type: 3}
   _tripleShotPrefab: {fileID: 5092722395080810227, guid: 6bbe58ff86fd142d28da00855bb0f6a0, type: 3}
