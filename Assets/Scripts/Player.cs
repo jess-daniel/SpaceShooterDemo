@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _speedMultiplyer = 2f;
+    [SerializeField] private float _speedBoost = 8f;
     [SerializeField] private int _lives = 3;
     [SerializeField] private GameObject _lazerPrefab;
     [SerializeField] private GameObject _tripleShotPrefab;
@@ -106,9 +107,15 @@ public class Player : MonoBehaviour
         // move by speed in meters per sec up and down
         // transform.Translate(Vector3.up * verticalInput * Time.deltaTime * _speed);
 
-        // more optimized solution because only 1 new Vector3 instead of 2
-        transform.Translate(direction * (_speed * _speedMultiplyer) * Time.deltaTime);
-
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.Translate(direction * (_speedBoost * _speedMultiplyer) * Time.deltaTime);
+        }
+        else
+        {
+            // more optimized solution because only 1 new Vector3 instead of 2
+            transform.Translate(direction * (_speed * _speedMultiplyer) * Time.deltaTime);
+        }
         // alt method to handle y axis more efficiently
         // transform.position = new Vector3(x_pos, Mathf.Clamp(yPos, -3.8f, 0), 0);
 
