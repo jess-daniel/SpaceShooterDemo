@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isTripleShotEnabled = false;
     [SerializeField] private bool _isSpeedBoostActive = false;
     [SerializeField] private bool _isShieldActive = false;
+    [SerializeField] private int _shieldPower = 3;
     [SerializeField] private GameObject _shieldVisualizer;
     [SerializeField] private GameObject _rightEngine, _leftEngine;
     [SerializeField] private AudioClip _lazerAudioClip;
@@ -141,8 +142,14 @@ public class Player : MonoBehaviour
     {
         if (_isShieldActive == true)
         {
-            _shieldVisualizer.SetActive(false);
-            _isShieldActive = false;
+            _shieldPower -= 1;
+            _uiManager.updateShields(_shieldPower);
+            if (_shieldPower == 0)
+            {
+                _shieldVisualizer.SetActive(false);
+                _isShieldActive = false;
+                return;
+            }
             return;
         }
 
@@ -202,6 +209,8 @@ public class Player : MonoBehaviour
 
     public void ShieldActive()
     {
+        _shieldPower = 3;
+        _uiManager.updateShields(_shieldPower);
         _shieldVisualizer.SetActive(true);
         _isShieldActive = true;
     }
