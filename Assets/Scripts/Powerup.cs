@@ -48,6 +48,10 @@ public class Powerup : MonoBehaviour
                         player.ShieldActive();
                         Debug.Log("Shield upgrade collected");
                         break;
+                    case 3:
+                        player.ResetAmmo();
+                        Debug.Log("Powerup::Ammo has been reset");
+                        break;
                     default:
                         Debug.Log("Ehh, IDK");
                         break;

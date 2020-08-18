@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _shieldVisualizer;
     [SerializeField] private GameObject _rightEngine, _leftEngine;
     [SerializeField] private AudioClip _lazerAudioClip;
+    [SerializeField] private int _ammo = 15;
     private AudioSource _lazerAudio;
     private int _score = 0;
     private float _canFire = -1f;
@@ -60,7 +61,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            Fire();
+            // if ammo is greater than 0, fire
+            if (_ammo > 0)
+            {
+                Fire();
+                _ammo--;
+                _uiManager.updateAmmo(_ammo);
+            }
+            // else, play "buzz" sound for empty ammo
         }
 
     }
@@ -213,6 +221,12 @@ public class Player : MonoBehaviour
         _uiManager.updateShields(_shieldPower);
         _shieldVisualizer.SetActive(true);
         _isShieldActive = true;
+    }
+
+    public void ResetAmmo()
+    {
+        _ammo = 15;
+        _uiManager.updateAmmo(_ammo);
     }
 
     public void AddScore()
