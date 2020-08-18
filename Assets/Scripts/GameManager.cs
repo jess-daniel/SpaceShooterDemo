@@ -19,11 +19,22 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        QuitGame();
     }
 
     public void StartGame()
     {
         _isGameOver = false;
+    }
+
+    public void QuitGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _isGameOver = false;
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void GameOver()

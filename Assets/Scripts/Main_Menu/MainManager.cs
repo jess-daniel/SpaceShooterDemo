@@ -10,4 +10,14 @@ public class MainManager : MonoBehaviour
     {
         SceneManager.LoadScene(1); // load game scene
     }
+
+    public void LoadInstructions()
+    {
+        SceneManager.LoadScene(2); // load game instructions
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
