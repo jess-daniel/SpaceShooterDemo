@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _shieldsText;
+    [SerializeField] private Text _ammoText;
     [SerializeField] private Image _LiveImage;
     [SerializeField] private Sprite[] _liveSprites;
     [SerializeField] private Text _gameOverText;
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
     {
         _scoreText.text = "Score: " + 0;
         _shieldsText.text = "Shields: " + 0;
+        _ammoText.text = "Ammo: " + 15;
         _gameOverText.gameObject.SetActive(false);
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -46,6 +48,11 @@ public class UIManager : MonoBehaviour
     public void updateShields(int shields)
     {
         _shieldsText.text = $"Shields: {shields}";
+    }
+
+    public void updateAmmo(int ammo)
+    {
+        _ammoText.text = $"Ammo: {ammo}";
     }
 
     public void StartGameSequence()
