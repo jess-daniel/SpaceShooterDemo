@@ -52,6 +52,10 @@ public class Powerup : MonoBehaviour
                         player.ResetAmmo();
                         Debug.Log("Powerup::Ammo has been reset");
                         break;
+                    case 4:
+                        player.HealthIncreased();
+                        Debug.Log("Powerup::Health increased by 1");
+                        break;
                     default:
                         Debug.Log("Ehh, IDK");
                         break;

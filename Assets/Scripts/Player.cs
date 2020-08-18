@@ -184,6 +184,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void HealthIncreased()
+    {
+        if (_lives == 3)
+        {
+            return;
+        }
+        _lives++;
+        if (_lives == 2)
+        {
+            _leftEngine.SetActive(false);
+        }
+        else if (_lives == 3)
+        {
+            _rightEngine.SetActive(false);
+        }
+        _uiManager.UpdateLives(_lives);
+    }
+
     public void TrippleShotActive()
     {
         _isTripleShotEnabled = true;
